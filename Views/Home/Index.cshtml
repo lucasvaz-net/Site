@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TypeWriter</title>
+</head>
+<body>
+    <style>
+        body {
+            background-image: url('fundo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            
+        }
+    </style>
+
+
+    <h1 style="max-width: 480px; margin: 60 auto;">
+        Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!
+    </h1>
+
+
+    <script>
+        function typeWriter(elemento) {
+            const texto = elemento.innerHTML;
+            elemento.innerHTML = '';
+
+            let index = 0;
+            let palavra = '';
+
+            const pausas = {
+                ' ': 150, // Pausa maior para espaços
+                '.': 500, // Pausa maior para ponto final
+                ',': 400, // Pausa menor para vírgula
+                ';': 300, // Pausa menor para ponto e vírgula
+                ':': 300, // Pausa menor para dois pontos
+                '!': 500, // Pausa maior para ponto de exclamação
+                '?': 500  // Pausa maior para ponto de interrogação
+            };
+
+            const escrever = () => {
+                elemento.innerHTML += texto[index];
+                index++;
+
+                if (index < texto.length) {
+                    const caractereAtual = texto[index];
+                    const pausa = pausas[caractereAtual] || 100; // Tempo padrão de digitação
+
+                    if (caractereAtual === ' ') {
+                        // Pausa após cada palavra
+                        setTimeout(escrever, pausa);
+                    } else {
+                        setTimeout(escrever, 100);
+                    }
+                }
+            };
+
+            escrever();
+        }
+
+        const titulo = document.querySelector('h1');
+        typeWriter(titulo);
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 150%;
+}
+
+body {
+    margin-bottom: 60px;
+    color: #eee;
+
+}
+
+/* Estilos específicos para os elementos */
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+}
+
+a {
+    color: #9cf;
+}
+
+/* Exemplos de estilos para diferentes elementos */
+.container {
+  
+}
+
+.button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+    /* Estilos para botões quando estão em hover ou focados */
+    .button:hover, .button:focus {
+        background-color: #555;
+    }
+
+/* Outros estilos específicos para o modo escuro */
+/* ... */
+
+table {
+    background-color: #222;
+    color: #eee;
+    border-collapse: collapse;
+}
+
+    table th, table td {
+        border: 1px solid #333;
+    }
+
+.alert {
+    background-color: #333;
+    color: #eee;
+    border: 1px solid #555;
+}
+
+    .alert.success {
+        background-color: #276749;
+    }
+
+    .alert.error {
+        background-color: #8b0000;
+    }
+
+input[type="text"], input[type="email"], textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+input[type="submit"], button {
+    background-color: #555;
+    color: #eee;
+    border: none;
+}
+
+    input[type="submit"]:hover, button:hover {
+        background-color: #777;
+    }
+
+.navbar {
+    background-color: transparent;
+    color: #eee;
+    border-bottom-color: #111;
+}
+
+    .navbar .nav-link {
+        color: #fff;
+    }
+
+        .navbar .nav-link:hover {
+            color: #9cf;
+        }
+
+        .navbar .nav-link.text {
+            color: #fff; /* Define a cor da fonte para branca */
+        }
+
+footer {
+    background-color: transparent;
+    border-top-color: #111;
+
+}
+.border-bottom-custom {
+    border-bottom-color: #222 !important;
+}
+
+.border-top-custom {
+    border-top-color: #222 !important;
+}
+
+
+body {
+    background: #111;
+
+}
+
+
+h1 {
+    
+    text-align: center;
+    margin: 60px auto;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+    h1::after {
+        content: '|';
+        opacity: 1;
+        margin-left: 5px;
+        display: inline-block;
+        animation: blink .7s infinite;
+    }
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+.SobreMim {
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    font-size: 25px;
+    padding: 0 20px; /* Adicione espaçamento horizontal para evitar que o texto fique muito próximo das bordas */
+    box-sizing: border-box; /* Inclua a largura do padding na largura total */
+}
+
+    .SobreMim::after {
+        content: '|';
+        opacity: 1;
+        display: inline-block;
+        animation: blink .7s infinite;
+    }
