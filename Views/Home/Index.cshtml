@@ -2,30 +2,21 @@
     ViewData["Title"] = "Inicio";
 }
 
-<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TypeWriter</title>
+  <style>
+      body {
+    background-image: url('fundo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+  </style>
 </head>
 <body>
-    <style>
-        body {
-            background-image: url('fundo.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            
-        }
-    </style>
-
-
-    <h1 style="max-width: 480px; margin: 60 auto;">
+    <h1 class="inicio" style="max-width: 480px; margin: auto;">
         Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!
     </h1>
-
-
     <script>
         function typeWriter(elemento) {
             const texto = elemento.innerHTML;
@@ -67,8 +58,4 @@
         const titulo = document.querySelector('h1');
         typeWriter(titulo);
     </script>
-
-
-
 </body>
-</html>
