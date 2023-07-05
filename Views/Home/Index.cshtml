@@ -4,56 +4,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        body {
-            background-image: url('/site/fundo.jpg');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-position: center center;
-        }
-
-
-
-        #button-container {
-    opacity: 0;
-            margin-left: 575px;
-    margin-top : 10px;
-  }
-
-        .transparent-button {
-            background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-            .transparent-button:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-
-  #btnSobre {
-    display: none;
-  }
-    </style>
-
-
   <title>TypeWriter</title>
- 
 </head>
+<html>
 <body>
-
     <h1 class="inicio" style="max-width: 480px; margin: auto;">Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!</h1>
-        <div id="button-container" style="opacity: 0;">
-        <button id="btnSobre" class="transparent-button" style="display: none;">Vamos lá</button>
+        <div id="button-container">
+        <a asp-controller="SobreMim" asp-action="Index" class="transparent-button">Vamos Lá</a>
     </div>
-    
-
     <script>
         function typeWriter(elemento) {
             const texto = elemento.innerHTML;
@@ -75,22 +33,14 @@
             escrever();
         }
 
-        function exibirBotao() {
-            const btnContainer = document.getElementById('button-container');
-            const btnSobre = document.getElementById('btnSobre');
-            btnContainer.style.opacity = 1;
-            btnSobre.style.display = 'block';
-        }
-
         const titulo = document.querySelector('h1');
         typeWriter(titulo);
 
-        setTimeout(exibirBotao, 14000); // Define o tempo de espera em milissegundos (2 segundos neste exemplo)
+        
+        setTimeout(function () {
+            document.getElementById("button-container").style.opacity = "1";
+        }, 13000);
 
-        const btnSobre = document.getElementById('btnSobre');
-        btnSobre.addEventListener('click', () => {
-            window.location.href = '/site/SobreMim'; // Substitua pelo caminho correto da página "Sobre Mim"
-        });
     </script>
-
 </body>
+</html>

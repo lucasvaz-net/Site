@@ -1,7 +1,126 @@
 html {
-    font-size: 14px;
+    height: auto;
 }
 
+body {
+    background-image: url('/fundo.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; /* Estica a imagem para preencher todo o elemento pai */
+    background-position: center center;
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+.estudos {
+    margin-top: 10px;
+    padding: 30px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 17px;
+}
+
+.nova {
+    margin-left: 545px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.10);
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .card p {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+#button-container {
+    opacity: 0;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 10px;
+    text-decoration: none;
+}
+#button-containersobremim {
+    opacity: 1;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.transparent-button {
+    background-color: transparent;
+    opacity: inherit;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+    .transparent-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+.sobremimtxt {
+    margin-top: 10px;
+    padding: 30px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
+    color: #fff;
+}
+
+.experiencia {
+    margin-top: 10px;
+    padding: 30px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
+    color: #fff;
+}
+
+p {
+    font-size: 20px;
+    text-align: left;
+    margin: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
 
 @media (min-width: 768px) {
     html {
@@ -9,23 +128,15 @@ html {
     }
 }
 
-html {
-    position: relative;
-    min-height: 150%;
-}
 
-
-/* Estilos específicos para os elementos */
-h1, h2, h3, h4, h5, h6,p {
+h1, h2, h3, h4, h5, h6, p {
     color: #fff;
 }
 
 a {
     color: #9cf;
+    text-decoration: none;
 }
-
-
-   
 
 table {
     background-color: #222;
@@ -57,8 +168,6 @@ input[type="text"], input[type="email"], textarea {
     border: 1px solid #555;
 }
 
-
- 
 .navbar {
     background-color: transparent;
     color: #eee;
@@ -74,27 +183,10 @@ input[type="text"], input[type="email"], textarea {
         }
 
         .navbar .nav-link.text {
-            color: #fff; /* Define a cor da fonte para branca */
+            color: #fff;
         }
 
-footer {
-    background-color: transparent;
-    border-top-color: #111;
-
-}
-.border-bottom-custom {
-    border-bottom-color: #222 !important;
-}
-
-.border-top-custom {
-    border-top-color: #222 !important;
-}
-
-
-
-
 h1 {
-    
     text-align: center;
     margin: 60px auto;
     font-family: 'Courier New', Courier, monospace;
@@ -104,31 +196,6 @@ h1 {
         content: '|';
         opacity: 1;
         margin-left: 5px;
-        display: inline-block;
-        animation: blink .7s infinite;
-    }
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-.SobreMim {
-    color: #fff;
-    text-align: left;
-    width: 100%;
-    font-size: 25px;
-    padding: 0 20px; /* Adicione espaçamento horizontal para evitar que o texto fique muito próximo das bordas */
-    box-sizing: border-box; /* Inclua a largura do padding na largura total */
-}
-
-    .SobreMim::after {
-        content: '|';
-        opacity: 1;
         display: inline-block;
         animation: blink .7s infinite;
     }

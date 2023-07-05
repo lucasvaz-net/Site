@@ -6,53 +6,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>TypeWriter</title>
-
-    <style>
-        body {
-            background-image: url('fundo.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-        }
-
-        p {
-            font-size: 20px;
-            text-align: left;
-            margin: 20px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .sobremimtxt {
-            margin-top: 10px;
-            padding: 30px;
-            text-align: justify;
-            font-size: 18px;
-            line-height: 1.6;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
-            color: #fff;
-
-        }
-
-        .transparent-button {
-            background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding:  10px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-left: 545px;
-        }
-
-            .transparent-button:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-    </style>
-
 </head>
 
 <body>
@@ -62,8 +17,9 @@
         <p>Lucas também se envolveu voluntariamente em projetos de inclusão digital para idosos, atuando como monitor, e contribuiu na arrecadação de lixo eletrônico reciclável para ensinar crianças e adolescentes a reciclar e dar manutenção em microcomputadores.</p>
         <p>Destaca-se sua experiência em manutenção de redes de computadores, instalação de circuito de monitoramento IP e desenvolvimento e execução de projetos de infraestrutura de TI. Sua habilidade em solução de problemas, empatia e comunicação eficaz são valorizadas por seus colegas.</p>
         <p>Lucas Vaz é um profissional exemplar, comprometido com a qualidade e adaptável a novos desafios. Sua paixão pela tecnologia e busca contínua por aprendizado fazem dele uma escolha promissora.</p>
-        <button onclick="window.location.href='/site/experiencia'" class="transparent-button">Vamos Continuar</button>
+        <div id="button-containersobremim">
+        <a asp-controller="Experiencia" asp-action="Index" class="transparent-button">Vamos Continuar</a>
+        </div>
     </div>
 </body>
-
 </html>
