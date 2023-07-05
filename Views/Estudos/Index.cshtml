@@ -10,11 +10,94 @@
             background-size: cover;
             background-position: center center;
         }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            margin: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .estudos {
+            margin-top: 10px;
+            padding: 30px;
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.6;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
+            color: #fff;
+        }
+
+        .transparent-button {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 545px;
+        }
+
+            .transparent-button:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
     </style>
 
 </head>
 
-<div class="text-center">
+<body>
     <h1 class="display-4">Estudos</h1>
-    <p>Aqui Voce Verá meus Estudos</p>
-</div>
+    <div class="estudos">
+        <h2>Ensino Superior</h2>
+        <p>Sistemas de Informação - Uniftc - 2018/2023</p>
+        </div>
+    <div class="estudos">
+        <h2>Cursos online</h2>
+        <ul>
+            <li>
+                <p>SQL - 30 Horas</p>
+            </li>
+            <li>
+                <p>SQL Completo - Softblue - 20 Horas</p>
+            </li>
+            <li>
+                <p>MySQL Consultas com Join - DIO - 2 Horas</p>
+            </li>
+            <li>
+                <p>Modelando um banco de dados SQL Server - DIO - 2 Horas</p>
+            </li>
+            <li>
+                <p>SQL Server Boas práticas - DIO - 2 Horas</p>
+            </li>
+            <li>
+                <p>SQL Server Criando consultas - DIO - 4 Horas</p>
+            </li>
+            <li>
+                <p>Desenvolvimento - 15 Horas</p>
+            </li>
+            <li>
+                <p>Logica de Programação - Fundação Bradesco - 15 Horas</p>
+            </li>
+        </ul>
+    </div>
+    <div class="estudos">
+        <h2>Certificações</h2>
+        <ul>
+            <li>
+                <p>Fundamentos de Informatica - IBSEC</p>
+            </li>
+            <li>
+                <p>Fundamentos de Cibersegurança - IBSEC</p>
+            </li>
+            <li>
+                <p>Transact SQL - Linkedin</p>
+            </li>
+        </ul>
+        <button onclick="window.location.href='/projetos'" class="transparent-button">Vamos Continuar</button>
+    </div>
+</body>
+
+
+   

@@ -1,18 +1,130 @@
 ﻿@{
     ViewData["Title"] = "Projetos";
 }
+<html lang="pt-br">
 <head>
-<style>
-    body {
-        background-image: url('fundo.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos</title>
+    <style>
 
+        body {
+            background-image: url('fundo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            margin: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .estudos {
+            margin-top: 10px;
+            padding: 30px;
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.6;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
+            color: #fff;
+        }
+
+        .transparent-button {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+        }
+
+            .transparent-button:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.10);
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .card h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                text-align : center;
+            }
+
+            .card p {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+    </style>
 </head>
-<div class="text-center">
-    <h1 class="display-4">Projetos</h1>
-    <p>Aqui Voce Verá meus Projetos </p>
-</div>
+<body>
+    <div class="container">
+        <div class="card">
+            <h3>Site Portfolio</h3>
+            <p>Moderno e minimalista, este site foi desenvolvido utilizando ASP.NET Core 6 com padrão de desenvolvimento MVC.</p>
+            <button onclick="window.open('https://github.com/lucasvaz-net/Site', '_blank')" class="transparent-button">
+                <img src="/github.png" class="github-icon">
+                Vamos Continuar
+            </button>
+        </div>
+        <div class="card">
+            <h3>WebPage</h3>
+            <p>Uma versão diferente de um portfolio bem resumido, cada página neste projeto é um carrossel Bootstrap.</p>
+        </div>
+        <div class="card">
+            <h3>Lembretes</h3>
+            <p>HTML que permite adicionar lembretes usando o armazenamento do navegador, com opção de alterar o tema.</p>
+        </div>
+        <div class="card">
+            <h3>Árvore</h3>
+            <p>Árvore Binária em Java, projeto para o curso de Sistemas de Informação.</p>
+        </div>
+        <div class="card">
+            <h3>Portifolio</h3>
+            <p>Versão inicial de portfolio simples, desenvolvido utilizando ASP.NET Core 6 com padrão de desenvolvimento MVC.</p>
+        </div>
+        <div class="card">
+            <h3>Classificados</h3>
+            <p>Sistema de Classificados em Java, criado para o curso de Sistemas de Informação.</p>
+        </div>
+        <div class="card">
+            <h3>CheckPool</h3>
+            <p>O "CheckPool" é um script PowerShell que verifica o status das Web App Pools em um servidor IIS e inicia aquelas que estão paradas.</p>
+
+        </div>
+        <div class="card">
+            <h3>PythonAPI</h3>
+            <p>Script Python que lê dados de uma API e salva em arquivo CSV.</p>
+        </div>
+        <div class="card">
+            <h3>FastDown</h3>
+            <p>O projeto Gerenciador de Downloads FastDown é uma aplicação web que permite o gerenciamento e o download de arquivos hospedados em um servidor.</p>
+        </div>
+    </div>
+</body>
+</html>

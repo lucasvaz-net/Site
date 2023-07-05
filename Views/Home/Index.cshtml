@@ -3,59 +3,90 @@
 }
 
 <head>
+    <style>
+        body {
+            background-image: url('fundo.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center center;
+
+        }
+
+        #button-container {
+    opacity: 0;
+            margin-left: 575px;
+    margin-top : 10px;
+  }
+
+        .transparent-button {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .transparent-button:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+  #btnSobre {
+    display: none;
+  }
+    </style>
+
+
   <title>TypeWriter</title>
-  <style>
-      body {
-    background-image: url('fundo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-  </style>
+ 
 </head>
 <body>
-    <h1 class="inicio" style="max-width: 480px; margin: auto;">
-        Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!
-    </h1>
+
+    <h1 class="inicio" style="max-width: 480px; margin: auto;">Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!</h1>
+        <div id="button-container" style="opacity: 0;">
+        <button id="btnSobre" class="transparent-button" style="display: none;">Vamos lá</button>
+    </div>
+    
+
     <script>
         function typeWriter(elemento) {
             const texto = elemento.innerHTML;
             elemento.innerHTML = '';
 
             let index = 0;
-            let palavra = '';
-
-            const pausas = {
-                ' ': 150, // Pausa maior para espaços
-                '.': 500, // Pausa maior para ponto final
-                ',': 400, // Pausa menor para vírgula
-                ';': 300, // Pausa menor para ponto e vírgula
-                ':': 300, // Pausa menor para dois pontos
-                '!': 500, // Pausa maior para ponto de exclamação
-                '?': 500  // Pausa maior para ponto de interrogação
-            };
 
             const escrever = () => {
                 elemento.innerHTML += texto[index];
                 index++;
 
                 if (index < texto.length) {
-                    const caractereAtual = texto[index];
-                    const pausa = pausas[caractereAtual] || 100; // Tempo padrão de digitação
-
-                    if (caractereAtual === ' ') {
-                        // Pausa após cada palavra
-                        setTimeout(escrever, pausa);
-                    } else {
-                        setTimeout(escrever, 100);
-                    }
+                    setTimeout(escrever, 100);
+                } else {
+                    exibirBotao(); // Chama a função para exibir o botão após a digitação do texto
                 }
             };
 
             escrever();
         }
 
+        function exibirBotao() {
+            const btnContainer = document.getElementById('button-container');
+            const btnSobre = document.getElementById('btnSobre');
+            btnContainer.style.opacity = 1;
+            btnSobre.style.display = 'block';
+        }
+
         const titulo = document.querySelector('h1');
         typeWriter(titulo);
+
+        setTimeout(exibirBotao, 14000); // Define o tempo de espera em milissegundos (2 segundos neste exemplo)
+
+        const btnSobre = document.getElementById('btnSobre');
+        btnSobre.addEventListener('click', () => {
+            window.location.href = '/SobreMim'; // Substitua pelo caminho correto da página "Sobre Mim"
+        });
     </script>
+
 </body>

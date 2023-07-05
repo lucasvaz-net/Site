@@ -3,6 +3,7 @@ html {
 }
 
 
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -15,9 +16,8 @@ html {
 }
 
 
-
 /* Estilos específicos para os elementos */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,p {
     color: #fff;
 }
 
@@ -26,18 +26,7 @@ a {
 }
 
 
-
-.button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-}
-
-    /* Estilos para botões quando estão em hover ou focados */
-    .button:hover, .button:focus {
-        background-color: #555;
-    }
-
+   
 
 table {
     background-color: #222;
@@ -69,16 +58,8 @@ input[type="text"], input[type="email"], textarea {
     border: 1px solid #555;
 }
 
-input[type="submit"], button {
-    background-color: #555;
-    color: #eee;
-    border: none;
-}
 
-    input[type="submit"]:hover, button:hover {
-        background-color: #777;
-    }
-
+ 
 .navbar {
     background-color: transparent;
     color: #eee;
