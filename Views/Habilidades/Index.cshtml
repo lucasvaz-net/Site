@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Habilidades";
+}
+
+<html>
+
+<head>
+    <!-- Outras tags e metadados -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1 class="display-4">Habilidades</h1>
+    <div style="position: relative; height: 500px; width: 100%;">
+        <canvas id="skillsChart"></canvas>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('skillsChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Lógica de Programação',
+                        'SQL Server',
+                        'MySQL',
+                        'PostgresSQL',
+                        'HTML',
+                        'CSS',
+                        'Bootstrap',
+                        'ASP.NET',
+                        'C#',
+                        'Python',
+                        'PowerShell',
+                        'Chart.JS',
+                        'Java'
+                    ],
+                    datasets: [{
+                        label: 'Nível de habilidade',
+                        data: [90, 70, 65, 60, 65, 40, 40, 30, 20, 20, 20, 15, 35],
+                        backgroundColor: 'rgba(255, 255, 255, 0.20)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false, // Define o tamanho responsivo do gráfico
+                    animation: {
+                        duration: 2000
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                color: 'white' // Define a cor dos rótulos do eixo y como branco
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }, ticks: {
+                                color: 'white' // Define a cor dos rótulos do eixo y como branco
+                            }
+                        }
+                    },
+                    plugins: {
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            font: {
+                                size: 14,
+                                color: 'white' // Define a cor dos rótulos dos dados como branco
+                            },
+                            formatter: function (value, context) {
+                                return '';
+                            },
+                            offset: -4
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div id="button-containersobremim">
+        <a asp-controller="Estudos" asp-action="Index" class="transparent-button">Vamos Continuar</a>
+    </div>
+</body>
+
+</html>
