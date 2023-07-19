@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Projetos";
 }
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -19,113 +20,45 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>Site Portfolio</h3>
-                    <p>Moderno e minimalista, este site foi desenvolvido utilizando ASP.NET Core 6 com padrão de desenvolvimento MVC.</p>
-                    <a href="https://github.com/lucasvaz-net/Site" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
+            @foreach (var projeto in Model)
+            {
+                <div class="col-md-6 col-lg-4 mt-4">
+                    <div class="card">
+                        <h3>@projeto.nome</h3>
+                        <p>@projeto.descricao</p>
+                        <div class="button-container">
+                            @if (!string.IsNullOrEmpty(projeto.linkgithub))
+                            {
+                                <a href="@projeto.linkgithub" target="_blank" class="btn btn-block transparent-button" type="button">
+                                    <img src="~/github.png" width="30px" height="30px"> Ver no Github
+                                </a>
+                            }
+                            else
+                            {
+                                <button class="btn btn-block transparent-button" type="button">Indisponível</button>
+                            }
 
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>WebPage</h3>
-                    <p>Uma versão diferente de um portfolio bem resumido, cada página neste projeto é um carrossel Bootstrap.</p>
-                    <a href="https://github.com/lucasvaz-net/WebPage" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>Lembretes</h3>
-                    <p>HTML que permite adicionar lembretes usando o armazenamento do navegador, com opção de alterar o tema.</p>
-                    <a href="https://github.com/lucasvaz-net/Lembretes" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>Portifolio</h3>
-                    <p>Versão inicial de portfolio simples, desenvolvido utilizando ASP.NET Core 6 com padrão de desenvolvimento MVC.</p>
-                    <a href="https://github.com/lucasvaz-net/Portifolio" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>Classificados</h3>
-                    <p>Sistema de Classificados em Java, criado para o curso de Sistemas de Informação.</p>
-                    <a href="https://github.com/lucasvaz-net/Classificados" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>CheckPool</h3>
-                    <p>O "CheckPool" é um script PowerShell que verifica o status das Web App Pools em um servidor IIS e inicia aquelas que estão paradas.</p>
-                    <a href="https://github.com/lucasvaz-net/CheckPool" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>PythonAPI</h3>
-                    <p>Script Python que lê dados de uma API e salva em arquivo CSV.</p>
-                    <a href="https://github.com/lucasvaz-net/PythonAPI" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>FastDown</h3>
-                    <p>O projeto Gerenciador de Downloads FastDown é uma aplicação web que permite o gerenciamento e o download de arquivos hospedados em um servidor.</p>
-                    <a href="https://github.com/lucasvaz-net/FastDown" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>iTask</h3>
-                    <p>iTask é um gerenciador de tarefas escrito em ASP.NET 6 usando padrão de desenvolvimento MVC e Banco de Dados SQL Server.</p>
-                    <small style="color: #000000; background-color:white;font-weight: bold;">Login: joao@example.com Senha: 123456</small>
-                    <div class="d-flex justify-content-between">
-                        <a href="https://github.com/lucasvaz-net/iTask" target="_blank" class="btn transparent-button" type="button">
-                            <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                        </a>
-                        <a href="http://lucasv-001-site1.dtempurl.com/" target="_blank" class="btn transparent-button" type="button">
-                            <img src="~/link-conectado.png" width="30px" height="30px"> Ver na Web
-                        </a>
+                            @if (!string.IsNullOrEmpty(projeto.linkweb))
+                            {
+                                <a href="@projeto.linkweb" target="_blank" class="btn btn-block transparent-button" type="button">
+                                    <img src="~/link-conectado.png" width="30px" height="31px"> Ver na Web
+                                </a>
+                            }
+                            else
+                            {
+                                <button class="btn btn-block transparent-button" type="button" width="30px" height="30px">Indisponível</button>
+                            }
+                        </div>
+                        @if (!string.IsNullOrEmpty(projeto.login) && !string.IsNullOrEmpty(projeto.senha))
+                        {
+                            <small style="color: #000000; background-color:white;font-weight: bold;">Login: @projeto.login Senha: @projeto.senha</small>
+                        }
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mt-4">
-                <div class="card">
-                    <h3>iTask Banco de Dados</h3>
-                    <p>Banco de Dados SQL Server que atende a aplicação iTask.</p>
-                    <a href="https://github.com/lucasvaz-net/iTask-Banco-de-Dados" target="_blank" class="btn transparent-button" type="button">
-                        <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                    </a>
-                </div>
-            </div>
+            }
         </div>
     </div>
-   
+
     <div id="button-containersobremim">
         <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
         <br />

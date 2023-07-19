@@ -58,7 +58,7 @@ body {
 #button-container {
     opacity: 0;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: space-between; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     margin-top: 10px;
     text-decoration: none;
