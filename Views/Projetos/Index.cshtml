@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Projetos";
+ 
 }
+
 
 <html lang="pt-br">
 <head>
@@ -23,21 +26,24 @@
         <div class="row">
             @foreach (var proj in Model)
             {
-                <div class="col-md-6 col-lg-4 mt-4">
-                    <div class="card">
+                <div class="col-md-6 col-lg-4 mt-4 d-flex">
+                    <div class="card flex-column">
+                        <br />
                         <h3>@proj.nome</h3>
-                        <p>@proj.descricao</p>
 
-
-                        <p align="left">
+                        <!-- Descrição do projeto -->
+                        <div style="flex-grow: 1;">
+                            <p>@proj.descricao</p>
+                        </div>
+                        <!-- Tecnologias associadas ao projeto -->
+                        <p class="text-center">
                             @foreach (var tecnologia in proj.tecnologias)
                             {
                                 <img src="~/@tecnologia" alt="@tecnologia" width="40" height="40" />
                             }
                         </p>
 
-
-                        <div class="button-container">
+                        <div class="button-container d-flex justify-content-center">
                             @if (!string.IsNullOrEmpty(proj.linkgithub))
                             {
                                 <a href="@proj.linkgithub" target="_blank" class="btn btn-block transparent-button" type="button">
@@ -51,22 +57,24 @@
 
                             @if (!string.IsNullOrEmpty(proj.linkweb))
                             {
-                                <a href="@proj.linkweb" target="_blank" class="btn btn-block transparent-button" type="button">
-                                    <img src="~/link-conectado.png" width="34px" height="30px"> Ver na Web
+                                @* Criar a URL com os parâmetros do projeto para "Ver na Web" usando o método string.Format *@
+                                <a href='@($"{proj.linkweb}/conta/login/{proj.login}/{proj.senha}")' target='_blank' class='btn btn-block transparent-button' type='button'>
+                                    <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
                                 </a>
                             }
-                            <!-- Exibir os ícones das tecnologias associadas ao projeto -->
-                         
+
+
                         </div>
-                        @if (!string.IsNullOrEmpty(proj.login) && !string.IsNullOrEmpty(proj.senha))
-                        {
-                            <small style="color:azure; font-weight: bold;">Login: @proj.login Senha: @proj.senha</small>
-                        }
+                        <br />
                     </div>
+
                 </div>
             }
         </div>
     </div>
+
+
+
 
     <div id="button-containersobremim">
         <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
