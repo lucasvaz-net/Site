@@ -22,7 +22,8 @@ namespace Site.Models
 
         public string senha { get; set; }
 
-        // Outros campos relevantes para a exibição no card
+        public List<string> tecnologias { get; set; }
+        public List<string> nome_arquivo { get; set; }
     }
 
 }

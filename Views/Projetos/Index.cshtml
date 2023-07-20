@@ -18,18 +18,29 @@
         </a>
     </div>
 
+
     <div class="container mt-4">
         <div class="row">
-            @foreach (var projeto in Model)
+            @foreach (var proj in Model)
             {
                 <div class="col-md-6 col-lg-4 mt-4">
                     <div class="card">
-                        <h3>@projeto.nome</h3>
-                        <p>@projeto.descricao</p>
-                        <div class="button-container">
-                            @if (!string.IsNullOrEmpty(projeto.linkgithub))
+                        <h3>@proj.nome</h3>
+                        <p>@proj.descricao</p>
+
+
+                        <p align="left">
+                            @foreach (var tecnologia in proj.tecnologias)
                             {
-                                <a href="@projeto.linkgithub" target="_blank" class="btn btn-block transparent-button" type="button">
+                                <img src="~/@tecnologia" alt="@tecnologia" width="40" height="40" />
+                            }
+                        </p>
+
+
+                        <div class="button-container">
+                            @if (!string.IsNullOrEmpty(proj.linkgithub))
+                            {
+                                <a href="@proj.linkgithub" target="_blank" class="btn btn-block transparent-button" type="button">
                                     <img src="~/github.png" width="30px" height="30px"> Ver no Github
                                 </a>
                             }
@@ -38,20 +49,18 @@
                                 <button class="btn btn-block transparent-button" type="button">Indisponível</button>
                             }
 
-                            @if (!string.IsNullOrEmpty(projeto.linkweb))
+                            @if (!string.IsNullOrEmpty(proj.linkweb))
                             {
-                                <a href="@projeto.linkweb" target="_blank" class="btn btn-block transparent-button" type="button">
-                                    <img src="~/link-conectado.png" width="30px" height="31px"> Ver na Web
+                                <a href="@proj.linkweb" target="_blank" class="btn btn-block transparent-button" type="button">
+                                    <img src="~/link-conectado.png" width="34px" height="30px"> Ver na Web
                                 </a>
                             }
-                            else
-                            {
-                                <button class="btn btn-block transparent-button" type="button" width="30px" height="30px">Indisponível</button>
-                            }
+                            <!-- Exibir os ícones das tecnologias associadas ao projeto -->
+                         
                         </div>
-                        @if (!string.IsNullOrEmpty(projeto.login) && !string.IsNullOrEmpty(projeto.senha))
+                        @if (!string.IsNullOrEmpty(proj.login) && !string.IsNullOrEmpty(proj.senha))
                         {
-                            <small style="color: #000000; background-color:white;font-weight: bold;">Login: @projeto.login Senha: @projeto.senha</small>
+                            <small style="color:azure; font-weight: bold;">Login: @proj.login Senha: @proj.senha</small>
                         }
                     </div>
                 </div>

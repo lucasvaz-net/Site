@@ -20,33 +20,56 @@ namespace Site.Controllers
             List<Projetos> projetos = new List<Projetos>();
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string sqlQuery = "SELECT id, nome, descricao, linkgithub, linkweb, login, senha FROM Projetos";
-
-                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                // Consulta para buscar os projetos
+                string projetosQuery = "SELECT * FROM vwProjetos";
+                SqlCommand projetosCommand = new SqlCommand(projetosQuery, connection);
 
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader projetosReader = projetosCommand.ExecuteReader();
 
-                while (reader.Read())
+                while (projetosReader.Read())
                 {
                     Projetos projeto = new Projetos
                     {
-                        id = (int)reader["id"],
-                        nome = reader["nome"].ToString(),
-                        descricao = reader["descricao"].ToString(),
-                        linkgithub = reader["linkgithub"].ToString(),
-                        linkweb = reader["linkweb"].ToString(),
-                        login = reader["login"].ToString(),
-                        senha = reader["senha"].ToString()
+                        id = (int)projetosReader["ID"],
+                        nome = projetosReader["NOME"].ToString(),
+                        descricao = projetosReader["descricao"].ToString(),
+                        linkgithub = projetosReader["linkgithub"].ToString(),
+                        linkweb = projetosReader["linkweb"].ToString(),
+                        login = projetosReader["login"].ToString(),
+                        senha = projetosReader["senha"].ToString(),
+                        tecnologias = new List<string>()
                     };
 
                     projetos.Add(projeto);
                 }
 
-                reader.Close();
+                projetosReader.Close();
+
+                // Consulta para buscar as tecnologias relacionadas a cada projeto
+                string tecnologiasQuery = "SELECT PROJETO_ID, NOME_ARQUIVO FROM vwTecnologiasProjeto";
+                SqlCommand tecnologiasCommand = new SqlCommand(tecnologiasQuery, connection);
+
+                SqlDataReader tecnologiasReader = tecnologiasCommand.ExecuteReader();
+
+                while (tecnologiasReader.Read())
+                {
+                    int projetoId = (int)tecnologiasReader["PROJETO_ID"];
+                    string nomeArquivo = tecnologiasReader["NOME_ARQUIVO"].ToString();
+
+                    // Associar a tecnologia ao projeto correspondente
+                    var projeto = projetos.Find(p => p.id == projetoId);
+                    if (projeto != null && !string.IsNullOrEmpty(nomeArquivo))
+                    {
+                        projeto.tecnologias.Add(nomeArquivo);
+                    }
+                }
+
+                tecnologiasReader.Close();
             }
 
             return View(projetos);
         }
+
     }
 }
