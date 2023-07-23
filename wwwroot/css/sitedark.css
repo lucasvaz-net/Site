@@ -32,28 +32,28 @@ body {
     margin-left: 545px;
 }
 
-.card {
-    background-color: rgba(255, 255, 255, 0.10);
-    border: 1px solid #000;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
-    height: 100%;
+#cardprojetos {
+    !important background-color: rgba(255, 255, 255, 0.10);
+    !important border: 1px solid #000;
+    !important border-radius: 10px;
+    !important box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    !important transition: box-shadow 0.3s ease;
+    !important height: 100%;
 }
 
-    .card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    #cardprojetos:hover {
+        !important box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .card h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-        text-align: center;
+    #cardprojetos h3 {
+        !important font-size: 20px;
+        !important margin-bottom: 10px;
+        !important text-align: center;
     }
 
-    .card p {
-        font-size: 20px;
-        line-height: 1.4;
+    #cardprojetos p {
+        !important font-size: 20px;
+        !important line-height: 1.4;
     }
 
 #button-container {

@@ -4,12 +4,16 @@
 
 <head>
     <meta charset="UTF-8">
-  <title>TypeWriter</title>
+    <title>TypeWriter</title>
 </head>
 <html>
+
 <body>
-    <h1 class="inicio" style="max-width: 480px; margin: auto;">Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de 4 anos. Seja bem-vindo(a) e Conheça minha jornada!</h1>
-        <div id="button-container">
+    <h1 class="inicio" style="max-width: 480px; margin: auto;">
+        Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de
+        4 anos. Seja bem-vindo(a) e Conheça minha jornada!
+    </h1>
+    <div id="button-container" style="display: flex; justify-content: center; align-items: center;">
         <a asp-controller="SobreMim" asp-action="Index" class="transparent-button">Vamos Lá</a>
     </div>
     <script>
@@ -36,11 +40,12 @@
         const titulo = document.querySelector('h1');
         typeWriter(titulo);
 
-        
+
         setTimeout(function () {
             document.getElementById("button-container").style.opacity = "1";
         }, 13000);
 
     </script>
 </body>
+
 </html>

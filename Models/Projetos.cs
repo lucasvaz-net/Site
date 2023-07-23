@@ -1,29 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Site.Models
+﻿namespace Site.Models
 {
-
     public class Projetos
     {
-        [Key]
-        public int id { get; set; }
-
-        [Required]
-        public string nome { get; set; }
-
-        [Required]
-        public string descricao { get; set; }
-
-        public string linkgithub { get; set; }
-
-        public string linkweb { get; set; }
-
-        public string login { get; set; }
-
-        public string senha { get; set; }
-
-        public List<string> tecnologias { get; set; }
-        public List<string> nome_arquivo { get; set; }
+        public int ProjetoId { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public string LinkGithub { get; set; }
+        public string LinkWeb { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
+        public List<Tecnologias> Tecnologias { get; set; }
     }
-
 }

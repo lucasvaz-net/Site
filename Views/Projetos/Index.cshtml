@@ -1,7 +1,22 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Projetos";
- 
+
+    // Número de cards para exibir por página
+    int cardsPorPagina = 6;
+
+    // Obter o número da página atual a partir da query string
+    int page = Context.Request.Query.ContainsKey("page") ? int.Parse(Context.Request.Query["page"]) : 1;
+
+    // Calcular o número total de páginas
+    int totalProjetos = Model.Count;
+    int totalPages = (int)Math.Ceiling((double)totalProjetos / cardsPorPagina);
+
+    // Calcular o índice inicial e final dos projetos a serem exibidos na página atual
+    int startIndex = (page - 1) * cardsPorPagina;
+    int endIndex = Math.Min(startIndex + cardsPorPagina, totalProjetos);
+
+    // Selecionar os projetos a serem exibidos na página atual
+    var projectsToShow = Model.GetRange(startIndex, endIndex - startIndex);
 }
 
 
@@ -14,73 +29,119 @@
 </head>
 <body>
 
-    <div style="text-align: center;">
-        <a href="https://github.com/lucasvaz-net">
-            <img height="180" src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&show_icons=true&theme=dark&include_all_comits=true&count_private=true" />
-            <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lucasvaz-net&layout=compact&langs_count=16&theme=dark" />
-        </a>
+    <div align="center">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs?username=lucasvaz-net&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=12&theme=radical&hide_border=false" height="150" alt="languages graph" />
+        <img src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=pt-br&hide_border=false" height="150" alt="stats graph" />
+        <img src="https://streak-stats.demolab.com?user=lucasvaz-net&locale=pt-br&mode=weekly&theme=radical&hide_border=false&border_radius=5" height="150" alt="streak graph" />
+    </div>
+
+    <div class="container mt-4">
+        <!-- Filtro por tecnologia -->
+        @{
+            // Criar uma lista separada de tecnologias distintas
+            List<string> tecnologias = new List<string>();
+            foreach (var proj in Model)
+            {
+                foreach (var tecnologia in proj.Tecnologias)
+                {
+                    if (!tecnologias.Contains(tecnologia.TecnologiaId.ToString()))
+                    {
+                        tecnologias.Add(tecnologia.TecnologiaId.ToString());
+                    }
+                }
+            }
+        }
+        <div>
+            <div class="d-flex flex-wrap">
+                @foreach (var tecnologia in ViewBag.TecnologiasDisponiveis as List<Tecnologias>)
+                {
+                    <label class="m-2 d-flex align-items-center">
+                        <input type="checkbox" name="tecnologia" value="@tecnologia.TecnologiaId.ToString()">
+                        <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" class="m-lg-1" style="cursor: pointer;" onclick="toggleCheckbox(this)">
+                    </label>
+                }
+            </div>
+            <button onclick="filtrarProjetos()" class="transparent-button">Filtrar</button>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+    <div class="row">
+        @foreach (var proj in projectsToShow)
+        {
+            <div class="col-md-6 col-lg-4 mt-4 d-flex">
+                    <div class="card cardprojetos flex-column text-center" style="background-color: rgba(255, 255, 255, 0.10);">
+                    <br />
+                    <h3>@proj.Nome</h3>
+                    <div style="flex-grow: 1;">
+                        <p>@proj.Descricao</p>
+                    </div>
+                    <p class="text-center">
+                        @foreach (var tecnologia in proj.Tecnologias)
+                        {
+                            <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" />
+                        }
+                    </p>
+
+                    <div class="button-container d-flex justify-content-center">
+                        @if (!string.IsNullOrEmpty(proj.LinkGithub))
+                        {
+                            <a href="@proj.LinkGithub" target="_blank" class="transparent-button" type="button">
+                                <img src="~/github.png" width="30px" height="30px"> Ver no Github
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="transparent-button" type="button">Indisponível</button>
+                        }
+
+                        @if (!string.IsNullOrEmpty(proj.LinkWeb))
+                        {
+                            <a href='@($"{proj.LinkWeb}/conta/login/{proj.Login}/{proj.Senha}")' target='_blank' class='transparent-button' type='button'>
+                                <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
+                            </a>
+                        }
+                    </div>
+                    <br />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="pagination mt-4">
+        <div class="btn-group me-2 text-center" role="group" aria-label="Pagination">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                    <a href="?page=@i" class="btn btn-outline-secondary @((i == page) ? "active" : "")">@i</a>
+            }
+        </div>
+    </div>
     </div>
 
 
     <div class="container mt-4">
-        <div class="row">
-            @foreach (var proj in Model)
-            {
-                <div class="col-md-6 col-lg-4 mt-4 d-flex">
-                    <div class="card flex-column">
-                        <br />
-                        <h3>@proj.nome</h3>
-
-                        <!-- Descrição do projeto -->
-                        <div style="flex-grow: 1;">
-                            <p>@proj.descricao</p>
-                        </div>
-                        <!-- Tecnologias associadas ao projeto -->
-                        <p class="text-center">
-                            @foreach (var tecnologia in proj.tecnologias)
-                            {
-                                <img src="~/@tecnologia" alt="@tecnologia" width="40" height="40" />
-                            }
-                        </p>
-
-                        <div class="button-container d-flex justify-content-center">
-                            @if (!string.IsNullOrEmpty(proj.linkgithub))
-                            {
-                                <a href="@proj.linkgithub" target="_blank" class="btn btn-block transparent-button" type="button">
-                                    <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                                </a>
-                            }
-                            else
-                            {
-                                <button class="btn btn-block transparent-button" type="button">Indisponível</button>
-                            }
-
-                            @if (!string.IsNullOrEmpty(proj.linkweb))
-                            {
-                                @* Criar a URL com os parâmetros do projeto para "Ver na Web" usando o método string.Format *@
-                                <a href='@($"{proj.linkweb}/conta/login/{proj.login}/{proj.senha}")' target='_blank' class='btn btn-block transparent-button' type='button'>
-                                    <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
-                                </a>
-                            }
-
-
-                        </div>
-                        <br />
-                    </div>
-
-                </div>
-            }
+        <div id="button-containersobremim" class="text-center">
+            <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
         </div>
     </div>
 
+    <script>
+        function filtrarProjetos() {
+            var tecnologiasSelecionadas = [];
+            document.querySelectorAll('input[name="tecnologia"]:checked').forEach(function (checkbox) {
+                tecnologiasSelecionadas.push(checkbox.value);
+            });
+
+            if (tecnologiasSelecionadas.length > 0) {
+                var url = '@Url.Action("FiltrarProjetosPorTecnologia", "Projetos")';
+                // Alteração aqui: passar os IDs de tecnologia como query string na URL
+                window.location.href = url + "?tecnologiaIds=" + tecnologiasSelecionadas.join('&tecnologiaIds=');
+            } else {
+                var url = '@Url.Action("Index", "Projetos")';
+                window.location.href = url;
+            }
+        }
+    </script>
 
 
-
-    <div id="button-containersobremim">
-        <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
-        <br />
-        <br />
-        <br />
-    </div>
 </body>
 </html>
