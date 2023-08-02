@@ -26,11 +26,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Projetos</title>
 
+
 </head>
 <body>
-    <div id="estrelasproj">
-        <div class="conteudoproj">
-
+    <div id="estrelas">
+        <h1 class="display-4">Projetos</h1>
         <div align="center">
             <img src="https://github-readme-stats.vercel.app/api/top-langs?username=lucasvaz-net&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=12&theme=radical&hide_border=false" height="150" alt="languages graph" />
             <img src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=pt-br&hide_border=false" height="150" alt="stats graph" />
@@ -72,7 +72,7 @@
                     @foreach (var proj in projectsToShow)
                     {
                         <div class="col-md-6 col-lg-4 mt-4 d-flex">
-                            <div class="card cardprojetos flex-column text-center" style="background-color: rgba(255, 255, 255, 0.10);">
+                            <div class="card flex-column text-center">
                                 <br />
                                 <h3>@proj.Nome</h3>
                                 <div style="flex-grow: 1;">
@@ -126,16 +126,18 @@
                 </div>
             </div>
 
-        </div>
-    </div>
 
+        @for (int i = 0; i < 300; i++)
+        {
+            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 10))s;"></div>
+        }
+    </div>
         <script>
                 function filtrarProjetos() {
             var tecnologiasSelecionadas = [];
             document.querySelectorAll('input[name="tecnologia"]:checked').forEach(function (checkbox) {
                 tecnologiasSelecionadas.push(checkbox.value);
             });
-
             if (tecnologiasSelecionadas.length > 0) {
                 var url = '@Url.Action("FiltrarProjetosPorTecnologia", "Projetos")';
                 // Alteração aqui: passar os IDs de tecnologia como query string na URL
@@ -144,48 +146,7 @@
                 var url = '@Url.Action("Index", "Projetos")';
                 window.location.href = url;
             }
-
-
         }
-
-
-        function criaEstrela() {
-            var estrela = document.createElement("div");
-            estrela.style.width = "2px";
-            estrela.style.height = "2px";
-            estrela.style.background = "white";
-            estrela.style.position = "absolute";
-            estrela.style.left = Math.random() * window.innerWidth + 'px';
-            estrela.style.top = Math.random() * window.innerHeight + 'px';
-            estrela.style.borderRadius = "50%";
-            estrela.className = "estrela"; // Adicionando uma classe para a estrela
-
-            return estrela;
-        }
-
-        function adicionaEstrelasAoCeu() {
-            var ceu = document.getElementById('estrelasproj');
-
-            for (var i = 0; i < 300; i++) {
-                var estrela = criaEstrela();
-                ceu.appendChild(estrela);
-            }
-        }
-
-        function fazEstrelasCintilarem() {
-            var estrelas = document.getElementsByClassName('estrela');
-
-            for (var i = 0; i < estrelas.length; i++) {
-                var opacidade = Math.random();
-                estrelas[i].style.opacity = opacidade;
-            }
-        }
-
-        adicionaEstrelasAoCeu();
-
-        setInterval(fazEstrelasCintilarem, 1300);
-
     </script>
-
 </body>
 </html>

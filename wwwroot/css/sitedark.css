@@ -5,6 +5,7 @@ html {
 body {
     font-size: 14px;
     max-width: 100%;
+    background: black;
 }
 
 .estudos {
@@ -18,39 +19,29 @@ body {
 }
 
 #estrelas {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 70px;
 }
+@keyframes twinkling {
+    0% {
+        opacity: 0;
+    }
 
-#estrelasproj {
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-}
+    50% {
+        opacity: 1;
+    }
 
-
-.conteudoproj {
-    text-align: center;
-    max-width: 100%; 
-}
-
-
-.conteudo {
-    text-align: center;
-    max-width: 80%; 
+    100% {
+        opacity: 0;
+    }
 }
 
 .estrela {
-    transition: opacity 1s;
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkling 1.3s infinite ease-in-out;
 }
 
 .container {
@@ -59,34 +50,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-.nova {
-    margin-left: 545px;
-}
-
-#cardprojetos {
-    !important background-color: rgba(255, 255, 255, 0.10);
-    !important border: 1px solid #000;
-    !important border-radius: 10px;
-    !important box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    !important transition: box-shadow 0.3s ease;
-    !important height: 100%;
-}
-
-    #cardprojetos:hover {
-        !important box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    #cardprojetos h3 {
-        !important font-size: 20px;
-        !important margin-bottom: 10px;
-        !important text-align: center;
-    }
-
-    #cardprojetos p {
-        !important font-size: 20px;
-        !important line-height: 1.4;
-    }
 
 #button-container {
     opacity: 0;
@@ -133,15 +96,6 @@ body {
     color: #fff;
 }
 
-.experiencia {
-    margin-top: 10px;
-    padding: 30px;
-    text-align: justify;
-    font-size: 18px;
-    line-height: 1.6;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
-    color: #fff;
-}
 
 p {
     font-size: 20px;
@@ -166,29 +120,7 @@ a {
     text-decoration: none;
 }
 
-table {
-    background-color: #222;
-    color: #eee;
-    border-collapse: collapse;
-}
 
-    table th, table td {
-        border: 1px solid #333;
-    }
-
-.alert {
-    background-color: #333;
-    color: #eee;
-    border: 1px solid #555;
-}
-
-    .alert.success {
-        background-color: #276749;
-    }
-
-    .alert.error {
-        background-color: #8b0000;
-    }
 
 input[type="text"], input[type="email"], textarea {
     background-color: #333;
@@ -197,23 +129,15 @@ input[type="text"], input[type="email"], textarea {
 }
 
 .navbar {
-    background-color: transparent;
-    color: #eee;
-    border-bottom-color: #111;
-    z-index:1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: #ffffff; /* Cor da fonte branca */
+    z-index: 1;
 }
 
-    .navbar .nav-link {
-        color: #fff;
-    }
 
-        .navbar .nav-link:hover {
-            color: #9cf;
-        }
 
-        .navbar .nav-link.text {
-            color: #fff;
-        }
 
 h1 {
     text-align: center;
@@ -228,3 +152,9 @@ h1 {
         display: inline-block;
         animation: blink .7s infinite;
     }
+
+.card {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

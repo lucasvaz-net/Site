@@ -1,13 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Estudos";
 }
-
+<html lang="pt-br">
 <head>
-   
-
+    <meta charset="UTF-8">
 </head>
-
 <body>
+    <div id="estrelas">
     <h1 class="display-4">Estudos</h1>
     <div class="estudos">
         <h2>Ensino Superior</h2>
@@ -59,7 +58,11 @@
     <div id="button-containersobremim">
         <a asp-controller="Contato" asp-action="Index" class="transparent-button">Entrar em contato</a>
     </div>
+
+        @for (int i = 0; i < 300; i++)
+    {
+        <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 10))s;"></div>
+    }
+</div>
 </body>
-
-
-   
+</html>

@@ -4,59 +4,59 @@
 
 <html>
 <body>
-    <div id="estrelas" class="mt-5">
-        <div class="conteudo">
-    <h1 class="display-4">Experiencia</h1>
-    <div class="experiencia">
-        <h2>Experiência Profissional</h2>
-        <ul>
-            <li>
-                <h3>Encarregado de Tecnologia - Avatim</h3>
-                <p>2019 - Atualmente</p>
-                <p>Responsável pela infraestrutura de TI</p>
-                <p>Análise de Banco de Dados e Sistemas Asp.Net</p>
-            </li>
-            <li>
-                <h3>Operador de Caixa - Mais Voce Itabuna</h3>
-                <p>2018 - 2019</p>
-                <p>Atendimento ao Cliente</p>
-                <p>Experiência com uso de ERP</p>
-            </li>
-            <li>
-                <h3>Técnico de Informática - Infocriativa</h3>
-                <p>2016 - 2016</p>
-                <p>Manutenção de Hardware e Software</p>
-                <p>Suporte Presencial</p>
-            </li>
-        </ul>
-    </div>
-    <div class="experiencia">
-        <h2>Experiência Voluntária</h2>
-        <ul>
-            <li>
-                <h3>FTCeira Idade - Itabuna</h3>
-                <p>2017 - 2019</p>
-                <p>Projeto de Extensão que oferece cursos gratuitos para o público da terceira idade de Itabuna.</p>
-            </li>
-            <li>
-                <h3>FTC Ame Vidas - Itabuna</h3>
-                <p>2018 - 2019</p>
-                <p>Projeto de Extensão que utiliza aproveitamento de sucata eletrônica como ferramenta de conhecimento para adolescentes de Itabuna em parceria com associação comunitária.</p>
-            </li>
-            <li>
-                <h3>Java nas Escolas - Itabuna</h3>
-                <p>2019 - 2019</p>
-                <p>Projeto de Extensão que oferece cursos de lógica de programação e desenvolvimento para alunos da rede pública de Itabuna.</p>
-            </li>
-        </ul>
+    <div id="estrelas">
+        <h1 class="display-4">Experiencia</h1>
+        <div class="estudos">
+            <h2>Experiência Profissional</h2>
+            <ul>
+                <li>
+                    <h3>Encarregado de Tecnologia - Avatim</h3>
+                    <p>2019 - Atualmente</p>
+                    <p>Responsável pela infraestrutura de TI</p>
+                    <p>Análise de Banco de Dados e Sistemas Asp.Net</p>
+                </li>
+                <li>
+                    <h3>Operador de Caixa - Mais Voce Itabuna</h3>
+                    <p>2018 - 2019</p>
+                    <p>Atendimento ao Cliente</p>
+                    <p>Experiência com uso de ERP</p>
+                </li>
+                <li>
+                    <h3>Técnico de Informática - Infocriativa</h3>
+                    <p>2016 - 2016</p>
+                    <p>Manutenção de Hardware e Software</p>
+                    <p>Suporte Presencial</p>
+                </li>
+            </ul>
+        </div>
+        <div class="estudos">
+            <h2>Experiência Voluntária</h2>
+            <ul>
+                <li>
+                    <h3>FTCeira Idade - Itabuna</h3>
+                    <p>2017 - 2019</p>
+                    <p>Projeto de Extensão que oferece cursos gratuitos para o público da terceira idade de Itabuna.</p>
+                </li>
+                <li>
+                    <h3>FTC Ame Vidas - Itabuna</h3>
+                    <p>2018 - 2019</p>
+                    <p>Projeto de Extensão que utiliza aproveitamento de sucata eletrônica como ferramenta de conhecimento para adolescentes de Itabuna em parceria com associação comunitária.</p>
+                </li>
+                <li>
+                    <h3>Java nas Escolas - Itabuna</h3>
+                    <p>2019 - 2019</p>
+                    <p>Projeto de Extensão que oferece cursos de lógica de programação e desenvolvimento para alunos da rede pública de Itabuna.</p>
+                </li>
+            </ul>
+        </div>
         <div id="button-containersobremim">
-        <a asp-controller="Projetos" asp-action="Index" class="transparent-button">Vamos Continuar</a>
+            <a asp-controller="Projetos" asp-action="Index" class="transparent-button">Vamos Continuar</a>
         </div>
-    </div>
+        @for (int i = 0; i < 300; i++)
+        {
+            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 10))s;"></div>
+        }
 
-        </div>
     </div>
-
-    <script src="~/js/estrelas.js"></script>
 </body>
 </html>
