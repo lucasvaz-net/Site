@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Página Inicial -->
+    <url>
+        <loc>https://lucasvaz.dev.br/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Página Sobre Mim -->
+    <url>
+        <loc>https://lucasvaz.dev.br/SobreMim/Index</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Página Experiência -->
+    <url>
+        <loc>https://lucasvaz.dev.br/Experiencia/Index</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Página Projetos -->
+    <url>
+        <loc>https://lucasvaz.dev.br/Projetos/Index</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Página Habilidades -->
+    <url>
+        <loc>https://lucasvaz.dev.br/Habilidades/Index</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Página Estudos -->
+    <url>
+        <loc>https://lucasvaz.dev.br/Estudos/Index</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Página Contato -->
+    <url>
+        <loc>https://lucasvaz.dev.br/Contato/Index</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset>

@@ -28,104 +28,109 @@
 
 </head>
 <body>
+    <div id="estrelasproj">
+        <div class="conteudoproj">
 
-    <div align="center">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs?username=lucasvaz-net&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=12&theme=radical&hide_border=false" height="150" alt="languages graph" />
-        <img src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=pt-br&hide_border=false" height="150" alt="stats graph" />
-        <img src="https://streak-stats.demolab.com?user=lucasvaz-net&locale=pt-br&mode=weekly&theme=radical&hide_border=false&border_radius=5" height="150" alt="streak graph" />
-    </div>
+        <div align="center">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs?username=lucasvaz-net&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=12&theme=radical&hide_border=false" height="150" alt="languages graph" />
+            <img src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=pt-br&hide_border=false" height="150" alt="stats graph" />
+            <img src="https://streak-stats.demolab.com?user=lucasvaz-net&locale=pt-br&mode=weekly&theme=radical&hide_border=false&border_radius=5" height="150" alt="streak graph" />
+        </div>
 
-    <div class="container mt-4">
-        <!-- Filtro por tecnologia -->
-        @{
-            // Criar uma lista separada de tecnologias distintas
-            List<string> tecnologias = new List<string>();
-            foreach (var proj in Model)
-            {
-                foreach (var tecnologia in proj.Tecnologias)
+        <div class="container mt-4">
+            <!-- Filtro por tecnologia -->
+            @{
+                // Criar uma lista separada de tecnologias distintas
+                List<string> tecnologias = new List<string>();
+                foreach (var proj in Model)
                 {
-                    if (!tecnologias.Contains(tecnologia.TecnologiaId.ToString()))
+                    foreach (var tecnologia in proj.Tecnologias)
                     {
-                        tecnologias.Add(tecnologia.TecnologiaId.ToString());
+                        if (!tecnologias.Contains(tecnologia.TecnologiaId.ToString()))
+                        {
+                            tecnologias.Add(tecnologia.TecnologiaId.ToString());
+                        }
                     }
                 }
             }
-        }
-        <div>
-            <div class="d-flex flex-wrap">
-                @foreach (var tecnologia in ViewBag.TecnologiasDisponiveis as List<Tecnologias>)
-                {
-                    <label class="m-2 d-flex align-items-center">
-                        <input type="checkbox" name="tecnologia" value="@tecnologia.TecnologiaId.ToString()">
-                        <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" class="m-lg-1" style="cursor: pointer;" onclick="toggleCheckbox(this)">
-                    </label>
-                }
+            <div>
+                <div class="d-flex flex-wrap">
+                    @foreach (var tecnologia in ViewBag.TecnologiasDisponiveis as List<Tecnologias>)
+                    {
+                        <label class="m-2 d-flex align-items-center">
+                            <input type="checkbox" name="tecnologia" value="@tecnologia.TecnologiaId.ToString()">
+                            <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" class="m-lg-1" style="cursor: pointer;" onclick="toggleCheckbox(this)">
+                        </label>
+                    }
+                </div>
+                <button onclick="filtrarProjetos()" class="transparent-button">Filtrar</button>
             </div>
-            <button onclick="filtrarProjetos()" class="transparent-button">Filtrar</button>
         </div>
-    </div>
 
-    <div class="container mt-4">
-    <div class="row">
-        @foreach (var proj in projectsToShow)
-        {
-            <div class="col-md-6 col-lg-4 mt-4 d-flex">
-                    <div class="card cardprojetos flex-column text-center" style="background-color: rgba(255, 255, 255, 0.10);">
-                    <br />
-                    <h3>@proj.Nome</h3>
-                    <div style="flex-grow: 1;">
-                        <p>@proj.Descricao</p>
+            <div class="container mt-4">
+                <div class="row">
+                    @foreach (var proj in projectsToShow)
+                    {
+                        <div class="col-md-6 col-lg-4 mt-4 d-flex">
+                            <div class="card cardprojetos flex-column text-center" style="background-color: rgba(255, 255, 255, 0.10);">
+                                <br />
+                                <h3>@proj.Nome</h3>
+                                <div style="flex-grow: 1;">
+                                    <p>@proj.Descricao</p>
+                                </div>
+                                <p class="text-center">
+                                    @foreach (var tecnologia in proj.Tecnologias)
+                                    {
+                                        <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" />
+                                    }
+                                </p>
+
+                                <div class="button-container d-flex justify-content-center">
+                                    @if (!string.IsNullOrEmpty(proj.LinkGithub))
+                                    {
+                                        <a href="@proj.LinkGithub" target="_blank" class="transparent-button" type="button">
+                                            <img src="~/github.png" width="30px" height="30px"> Ver no Github
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <button class="transparent-button" type="button">Indisponível</button>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(proj.LinkWeb))
+                                    {
+                                        <a href='@($"{proj.LinkWeb}/conta/login/{proj.Login}/{proj.Senha}")' target='_blank' class='transparent-button' type='button'>
+                                            <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
+                                        </a>
+                                    }
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="pagination mt-4">
+                    <div class="btn-group me-2 text-center" role="group" aria-label="Pagination">
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            <a href="?page=@i" class="btn btn-outline-secondary @((i == page) ? "active" : "")">@i</a>
+                        }
                     </div>
-                    <p class="text-center">
-                        @foreach (var tecnologia in proj.Tecnologias)
-                        {
-                            <img src="@Url.Content($"~/{tecnologia.NomeArquivo}")" width="30" height="30" />
-                        }
-                    </p>
-
-                    <div class="button-container d-flex justify-content-center">
-                        @if (!string.IsNullOrEmpty(proj.LinkGithub))
-                        {
-                            <a href="@proj.LinkGithub" target="_blank" class="transparent-button" type="button">
-                                <img src="~/github.png" width="30px" height="30px"> Ver no Github
-                            </a>
-                        }
-                        else
-                        {
-                            <button class="transparent-button" type="button">Indisponível</button>
-                        }
-
-                        @if (!string.IsNullOrEmpty(proj.LinkWeb))
-                        {
-                            <a href='@($"{proj.LinkWeb}/conta/login/{proj.Login}/{proj.Senha}")' target='_blank' class='transparent-button' type='button'>
-                                <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
-                            </a>
-                        }
-                    </div>
-                    <br />
                 </div>
             </div>
-        }
-    </div>
-    <div class="pagination mt-4">
-        <div class="btn-group me-2 text-center" role="group" aria-label="Pagination">
-            @for (int i = 1; i <= totalPages; i++)
-            {
-                    <a href="?page=@i" class="btn btn-outline-secondary @((i == page) ? "active" : "")">@i</a>
-            }
-        </div>
-    </div>
-    </div>
 
 
-    <div class="container mt-4">
-        <div id="button-containersobremim" class="text-center">
-            <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
+            <div class="container mt-4">
+                <div id="button-containersobremim" class="text-center">
+                    <a asp-controller="Habilidades" asp-action="Index" class="transparent-button">Vamos Continuar</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <script>
-        function filtrarProjetos() {
+        <script>
+                function filtrarProjetos() {
             var tecnologiasSelecionadas = [];
             document.querySelectorAll('input[name="tecnologia"]:checked').forEach(function (checkbox) {
                 tecnologiasSelecionadas.push(checkbox.value);
@@ -139,9 +144,48 @@
                 var url = '@Url.Action("Index", "Projetos")';
                 window.location.href = url;
             }
-        }
-    </script>
 
+
+        }
+
+
+        function criaEstrela() {
+            var estrela = document.createElement("div");
+            estrela.style.width = "2px";
+            estrela.style.height = "2px";
+            estrela.style.background = "white";
+            estrela.style.position = "absolute";
+            estrela.style.left = Math.random() * window.innerWidth + 'px';
+            estrela.style.top = Math.random() * window.innerHeight + 'px';
+            estrela.style.borderRadius = "50%";
+            estrela.className = "estrela"; // Adicionando uma classe para a estrela
+
+            return estrela;
+        }
+
+        function adicionaEstrelasAoCeu() {
+            var ceu = document.getElementById('estrelasproj');
+
+            for (var i = 0; i < 300; i++) {
+                var estrela = criaEstrela();
+                ceu.appendChild(estrela);
+            }
+        }
+
+        function fazEstrelasCintilarem() {
+            var estrelas = document.getElementsByClassName('estrela');
+
+            for (var i = 0; i < estrelas.length; i++) {
+                var opacidade = Math.random();
+                estrelas[i].style.opacity = opacidade;
+            }
+        }
+
+        adicionaEstrelasAoCeu();
+
+        setInterval(fazEstrelasCintilarem, 1300);
+
+    </script>
 
 </body>
 </html>

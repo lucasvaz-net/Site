@@ -3,12 +3,8 @@ html {
 }
 
 body {
-    background-image: url('../fundo.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%; /* Estica a imagem para preencher todo o elemento pai */
-    background-position: center center;
     font-size: 14px;
-    min-height: 100vh;
+    max-width: 100%;
 }
 
 .estudos {
@@ -19,6 +15,42 @@ body {
     line-height: 1.6;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(255, 255, 255, 0.10);
     color: #fff;
+}
+
+#estrelas {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#estrelasproj {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+
+
+.conteudoproj {
+    text-align: center;
+    max-width: 100%; 
+}
+
+
+.conteudo {
+    text-align: center;
+    max-width: 80%; 
+}
+
+.estrela {
+    transition: opacity 1s;
 }
 
 .container {
@@ -66,12 +98,9 @@ body {
 }
 
 #button-containersobremim {
-    opacity: 1;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Alinha horizontalmente no centro */
     margin-top: 10px;
-    text-decoration: none;
 }
 
 .transparent-button {
@@ -171,6 +200,7 @@ input[type="text"], input[type="email"], textarea {
     background-color: transparent;
     color: #eee;
     border-bottom-color: #111;
+    z-index:1;
 }
 
     .navbar .nav-link {
