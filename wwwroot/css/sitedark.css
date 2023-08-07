@@ -51,14 +51,7 @@ body {
     align-items: center;
 }
 
-#button-container {
-    opacity: 0;
-    display: flex;
-    justify-content: space-between; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    margin-top: 10px;
-    text-decoration: none;
-}
+
 
 #button-containersobremim {
     display: flex;
@@ -132,12 +125,15 @@ input[type="text"], input[type="email"], textarea {
     position: fixed;
     top: 0;
     width: 100%;
-    color: #ffffff; /* Cor da fonte branca */
+    background-color: #000000; /* Cor de fundo preta */
     z-index: 1;
 }
 
+.nav-link{
 
+    color:white;
 
+}
 
 h1 {
     text-align: center;

@@ -1,4 +1,4 @@
-﻿@{
+﻿
     ViewData["Title"] = "Inicio";
 }
 
@@ -6,20 +6,18 @@
     <meta charset="UTF-8">
 </head>
 <html>
-
 <body>
-    <div id="estrelas">
-    <h1 style="max-width: 480px; margin: auto;">
-        Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de quatro anos. Seja bem-vindo(a) e Conheça minha jornada!
-    </h1>
-    <div id="button-container" style="display: flex; justify-content: center; align-items: center;">
-        <a asp-controller="SobreMim" asp-action="Index" class="transparent-button">Vamos Lá</a>
-    </div>
-        @for (int i = 0; i < 300; i++)
+    <div id="estrelas" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h1 style="max-width: 480px; text-align: center;">
+            Olá, Sou o Lucas Vaz, Atuo na Área de Tecnologia há mais de quatro anos. Seja bem-vindo(a) e Conheça minha jornada!
+        </h1>
+        <div id="button-container" style="display: flex; justify-content: center; align-items: center; opacity: 0;">
+            <a asp-controller="SobreMim" asp-action="Index" class="transparent-button">Vamos Lá</a>
+        </div>
+        @for (int i = 0; i < 150; i++)
         {
-            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 10))s;"></div>
+            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 50))s;"></div>
         }
-</div>
+    </div>
 </body>
-
 </html>

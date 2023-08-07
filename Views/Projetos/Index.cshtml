@@ -31,11 +31,6 @@
 <body>
     <div id="estrelas">
         <h1 class="display-4">Projetos</h1>
-        <div align="center">
-            <img src="https://github-readme-stats.vercel.app/api/top-langs?username=lucasvaz-net&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=12&theme=radical&hide_border=false" height="150" alt="languages graph" />
-            <img src="https://github-readme-stats.vercel.app/api?username=lucasvaz-net&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=pt-br&hide_border=false" height="150" alt="stats graph" />
-            <img src="https://streak-stats.demolab.com?user=lucasvaz-net&locale=pt-br&mode=weekly&theme=radical&hide_border=false&border_radius=5" height="150" alt="streak graph" />
-        </div>
 
         <div class="container mt-4">
             <!-- Filtro por tecnologia -->
@@ -99,7 +94,7 @@
 
                                     @if (!string.IsNullOrEmpty(proj.LinkWeb))
                                     {
-                                        <a href='@($"{proj.LinkWeb}/conta/login/{proj.Login}/{proj.Senha}")' target='_blank' class='transparent-button' type='button'>
+                                    <a href='@($"{proj.LinkWeb}/conta/login/{proj.Login}/{proj.Senha}")' target='_blank' class='transparent-button' type='button'>
                                             <img src="~/link-conectado.png" width='34px' height='30px'> Ver na Web
                                         </a>
                                     }
@@ -110,7 +105,7 @@
                     }
                 </div>
                 <div class="pagination mt-4">
-                    <div class="btn-group me-2 text-center" role="group" aria-label="Pagination">
+                    <div class="btn-group me-2 text-center" role="group" aria-label="Pagination"> 
                         @for (int i = 1; i <= totalPages; i++)
                         {
                             <a href="?page=@i" class="btn btn-outline-secondary @((i == page) ? "active" : "")">@i</a>
@@ -126,10 +121,9 @@
                 </div>
             </div>
 
-
-        @for (int i = 0; i < 300; i++)
+        @for (int i = 0; i < 150; i++)
         {
-            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 10))s;"></div>
+            <div class="estrela" style="top: @(new Random().Next(0, 100))vh; left: @(new Random().Next(0, 100))vw; animation-delay: @(new Random().Next(1, 50))s;"></div>
         }
     </div>
         <script>
